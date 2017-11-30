@@ -52,14 +52,14 @@ LiquidCrystal_I2C lcd(0x3f,2,1,0,4,5,6,7,3, POSITIVE); // Inicializa o display n
 
 //=======================================================//OBSERVAÇÔES DE HARDWARE//=======================================================
 
-//=// Valor sensor ( Máx: 1024"SECO")( Min: 370 "Supermer molhado") OBS: é preciso analisar/calibrar sempre quando for trocado o sensor//==
-//=// A placa de relés funciona em nivel lógico baixo (Ligado = LOW || Desligado = HIGH)===============================================//==
+//=// Valor sensor ( Máx: 1024"SECO")( Min: 370 "Super molhado") OBS: é preciso analisar/calibrar sempre quando for trocado o sensor//==
+//=// A placa de relés funciona em nível lógico baixo (Ligado = LOW || Desligado = HIGH)===============================================//==
 
 //=========================================================================================================================================
 
 const int sensorSW = 4   ;           // Sinal digital de detecção de umidade
 const int sensor   = A1  ;           // Pino analógico em que está conectado o sensor
-const int Smax     = 474   ;         // valor máximo do sensor de calibração para percentual
+const int Smax     = 370 ;         // valor máximo do sensor de calibração para percentual
 const int Smin     = 1024;           // valor mínimo do sensor de calibração para percentual
 const int relay    = 2   ;           // Pino em que está conectado o Relay           
 
@@ -68,8 +68,6 @@ const int relay    = 2   ;           // Pino em que está conectado o Relay
 
 int       V              ;           // Armazenamento do valor analógico do sensor de umidade
 int       porcen         ;           // Recebe o calculo percentual de umidade
-int       porcen2        ;
-int       ACbomb = 0     ;           // Variavel de chamada de bomba
 String    bomb           ;           // Variavel de status da bomba
 int       Recontador     ;           // Contador de quantas vezes foi regada a planta
 
@@ -78,7 +76,7 @@ int       Recontador     ;           // Contador de quantas vezes foi regada a p
 
 unsigned long trega   = 3000 ;       // Tempo de rega em segundos                                     //AJUSTAR SEMPRE
 unsigned long tespera = 10000;       // Tempo espera em segundos                                      //AJUSTAR SEMPRE
-const int     regraR  = 631  ;       // Resistência (Em kohms) a partir da qual começa a regar        //AJUSTAR SEMPRE
+const int     regraR  = 45  ;        // Resistência (Em kohms) a partir da qual começa a regar        //AJUSTAR SEMPRE
 //=========================================================================================================================================
 
 void setup() {
@@ -93,13 +91,12 @@ void setup() {
 }
 
 void loop() {
-  V      =  analogRead(sensor)                     ;       // Armazenamento da leitura sensor
-  porcen =  100-((( V - Smin)*100)/(Smax - Smin))  ;       // Cálculo do percentual de umidade de acordo com dados analógicos analisados.
+  V      =  analogRead(sensor) ;     // Armazenamento da leitura sensor
+  porcen =  (Smin-V)/6.54      ;     // Cálculo do percentual de umidade de acordo com dados analógicos analisados.
 
 //================================================= Rotina de Monitoramento Serial=========================================================  
            
-  Serial.print("Leitura do Sensor: ");  Serial.print(analogRead(sensor)); Serial.print("\t Saída digital sensor: "); 
-		Serial.print(digitalRead(sensorSW));Serial.print("\tUmidade "); Serial.print(porcen); Serial.print("%\t"); Serial.print(bomb);
+  Serial.print("Leitura do Sensor: ");  Serial.print(analogRead(sensor)); Serial.print("\t Saida digital sensor: "); Serial.print(digitalRead(sensorSW));Serial.print("\tUmidade "); Serial.print(porcen); Serial.print("%\t"); Serial.print(bomb);
   Serial.print("\t"); Serial.print(digitalRead(relay));
   Serial.println("\n")               ;    
   
@@ -107,17 +104,17 @@ void loop() {
   lcd.setBacklight(HIGH);            // Aciona LED de luz de fundo do display LCD
   
 
-  if(V>regraR){
+  if(porcen<regraR){
     lcd.clear()               ;      // Limpa a mensagem de tela do LCD
     lcd.setCursor(0,0)        ;      // Posicionamento do cursor para receber escrita
     lcd.print("Bomba: ")      ;      // Escrita
-    bomb = "ON"               ;      // Define String de Status da bomba
+    bomb = " ON"              ;      // Define String de Status da bomba
     lcd.setCursor(6,0)        ;      // Posicionamento do cursor para receber escrita
     lcd.print(bomb)           ;      // Escreve status da bomba
     lcd.setCursor(0,1)        ;      // Posicionamento do cursor para receber escrita
-    lcd.print(V)              ;      // Escreve valor analógico de leitura do sensor
-    lcd.setCursor(5,1)        ;      // Posicionamento do cursor para receber escrita
-    lcd.print(" Umidade")     ;      // Escrita                ;
+    lcd.print(porcen)         ;      // Escreve valor analógico de leitura do sensor
+    lcd.setCursor(3,1)        ;      // Posicionamento do cursor para receber escrita
+    lcd.print("% Umidade")    ;      // Escrita                ;
     delay(500)                ;      // tempo de amostagem do texto
     digitalWrite(relay,LOW)   ;      // Liga bomba
     delay(trega)              ;      // Tempod e operação
@@ -126,22 +123,21 @@ void loop() {
     Recontador = Recontador +1;
   }
   
-    if(V<regraR){
+    if(porcen>regraR){
     lcd.clear()               ;       // Limpa a mensagem de tela do LCD
     lcd.setCursor(0,0)        ;       // Posicionamento do cursor para receber escrita
     lcd.print("Bomba: ")      ;       // Escrita
-    bomb = "OFF"              ;       // Define String de Status da bomba
+    bomb = " OFF"             ;       // Define String de Status da bomba
     lcd.setCursor(6,0)        ;       // Posicionamento do cursor para receber escrita
     lcd.print(bomb)           ;       // Escreve status da bomba
     lcd.setCursor(0,1)        ;       // Posicionamento do cursor para receber escrita
-    lcd.print(V)              ;       // Escreve valor analógico de leitura do sensor
-    lcd.setCursor(5,1)        ;       // Posicionamento do cursor para receber escrita
-    lcd.print(" Umidade")     ;       // Escrita 
+    lcd.print(porcen)         ;       // Escreve valor analógico de leitura do sensor
+    lcd.setCursor(3,1)        ;       // Posicionamento do cursor para receber escrita
+    lcd.print("% Umidade")    ;       // Escrita 
     delay(500)                ;       // tempo de amostagem do texto
   }
 
 }
-
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
