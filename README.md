@@ -150,6 +150,7 @@ Layout do projeto
 ![alt text](https://github.com/SamuelOFernandes/Controle_Umidade_de_Solo_Arduino/blob/master/layout.PNG)
  
 Legenda de como foram dispostos os componentes utilizados :
+
 ![alt text](https://github.com/SamuelOFernandes/Controle_Umidade_de_Solo_Arduino/blob/master/Legenda.PNG)
 
 
