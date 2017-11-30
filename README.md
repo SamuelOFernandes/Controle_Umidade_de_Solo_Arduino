@@ -1,6 +1,16 @@
 # Controle_Umidade_de_Solo_Arduino
+
+Integrantes do Grupo :
+
+Paulo Germano Ramos Villegas - RA: 20896906
+Carlos Eduardo Custódio do Carmo - RA : 20980204
+Edeval Damiati Neto - RA : 20948505 
+Samuel Oliveira Fernandes dos Santos - RA : 20408096 
+Gustavo Scabuzzi - RA : 20948506 
+
+
 Objetivo
-O projeto consiste de através de um ARDUINO controlar e monitorar a umidade do solo, criandoum 
+O projeto consiste de através de um ARDUINO controlar e monitorar a umidade do solo, criando um 
 sistema automático que faça a irrigação de acordo com  as configurações do sensor.
 ___________________________________________________________________________________
 Funcionamento: No ARDUINO UNO R3 será executada uma rotina responsável por
@@ -121,6 +131,236 @@ void loop() {
 
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+
+Layout do projeto simulado
+ (TinkerCad - Circuits)
+
+ 
+
+
+
+
+
+Orientação de Programação
+
+
+
+N°	Atividade	Campo
+1	Importar biblioteca para display i2C com Shield	#Include
+2	Importar biblioteca para sensor DHT11	 
+3	Importar biblioteca para sensor de umidade de solo com Shield	 
+4	Configurar Serial	Void Setup()
+5	Declarar variáveis globais (sensores, display, relé e auxíliares)	 
+6	Configurar display i2C	 
+7	Criar texto padrão do LCD Temperatura	Void Loop()
+8	Criar texto padrão do LCD Umidade	 
+9	Criar texto padrão do LCD acionamento da bomba	 
+10	Criar rotina de leitura e configuração do sensor DHT11	 
+11	Criar rotina de leitura e configuração do sensor umidade do solo	 
+12	Criar rotina de amostragem normalizada no Display 	 
+13	Criar rotina de amostragem com operação da bomba no Display	 
+14	Criar tomada de decisão de acordo com valor de umidade pretendido	 
+
+
+	Componentes Utilizados
+
+⦁	 Placa Uno R3
+⦁	 Cabo usb  arduíno
+⦁	Relé 8 canais 5v
+⦁	 Jumpers macho/macho e Jumpers macho/fêmea
+⦁	 Display lcd 16x2 12c backlight azul 
+⦁	Módulo serial i2c para display lcd 
+⦁	Protoboard 830 pontos 
+⦁	Módulo sensor de umidade de solo
+
+
+
+Descrição Técnica dos Itens Utilizados
+
+
+Placa Uno R3
+ 1.0
+
+Especificações: 
+
+- Microcontrolador: ATmega328  
+- Tensão de Operação: 5V
+- Tensão de Entrada: 7-12V 
+- Portas Digitais: 14 (6 podem ser usadas como PWM) 
+- Portas Analógicas: 6
+- Corrente Pinos I/O: 40mA
+- Corrente Pinos 3,3V: 50mA
+- Memória Flash: 32KB (0,5KB usado no bootloader) 
+- SRAM: 2KB
+- EEPROM: 1KB
+- Velocidade do Clock: 16MHz 
+
+
+
+
+
+                      
+    Cabo USB Arduíno
+
+
+ 1.1
+
+Especificações: 
+
+- Cabo USB 2.0
+-  Conectores:  A Macho X B Macho
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Relé 5v 8 canais 
+
+
+ 1.2
+Especificações:
+
+
+– Modelo: SRD-05VDC-SL-C 
+
+– Tensão de operação: 5VDC
+
+– Permite controlar cargas de 220V AC
+
+– Corrente típica de operação: 15~20mA
+
+– LED indicador de status
+
+– Pinagem: Normal Aberto, Normal Fechado e Comum
+
+– Tensão de saída: (30 VDC a 10A) ou (250VAC a 10A)
+
+– Furos de 3mm para fixação nas extremidades da placa
+
+– Tempo de resposta: 5~10ms
+– Dimensões: 135 x 52 x 20mm
+
+Jumpers Macho/Macho e Jumpers Macho/Fêmea
+
+   
+1.3(Jumpers  Macho/Macho )                                                                                   1.4 (Jumpers Macho/Fêmea )
+
+
+Especificações:
+
+–  Conector Macho x Macho
+
+– Conector Macho x Fêmea
+
+– Fios de 24 AWG
+
+
+
+
+
+
+
+
+
+
+Display LCD 16x2 12c Backlight Azul
+
+
+ 1.5
+
+Especificações:
+- Cor backlight: Azul
+- Cor escrita: Branca 
+- Adaptador display I2C integrado
+- Potenciômetro para ajuste do contraste
+- Tensão de operação: 5V 
+- Linhas: 2 
+- Colunas: 16
+- Interface: I2C 
+- Dimensões: 80 x 36 x 12mm 
+- Área visível: 64,5 x 16mm  
+Pinos: 
+- SDA 
+- SCL 
+- Vcc 
+- GND 
+
+
+Módulo serial i2c para display LCD 
+
+ 1.6
+
+
+Especificações:
+- Endereço I2C: 0x20-0x27 (Padrão 0x20 mas pode ser modificado) 
+- Compatível com Display LCD 16x2 e LCD 20x4 
+- Tensão de operação: 5V
+- Dimensões: 55 x 23 x 14mm 
+- Peso: 5g 
+
+
+
+
+
+
+
+
+
+Protoboard 830 pontos
+
+ 1.7
+
+
+Especificações:
+- Furos: 830 
+- Faixa de Temperatura: -20 a 80°C 
+- Para terminais e condutores de 0,3 a 0,8 mm (20 a 29 AWG)
+- Resistência de Isolamento: 100MΩ min. 
+- Tensão Máxima: 500v AC por minuto 
+- Dimensões: 165mm x 57mm x 10mm 
+
+
+
+
+
+
+
+
+
+ Módulo sensor de umidade de solo
+
+
+ 1.8
+
+
+Especificações: 
+- Tensão de Operação: 3,3-5V 
+- Sensibilidade ajustável via potenciômetro
+- Saída Digital e Analógica
+- Led indicador para tensão (vermelho)
+- Led indicador para saída digital (verde) 
+- Comparador LM393
+- Dimensões PCB: 3x1,5 cm
+- Dimensões Sonda: 6x2 cm
+ 
+
+Pinagem: 
+- VCC: 3,3-5v 
+- GND: GND 
+- D0: Saída Digital 
+- A0: Saída analógica
 
 
 
