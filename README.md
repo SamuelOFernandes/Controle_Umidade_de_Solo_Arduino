@@ -26,6 +26,15 @@ condição e umidade programada. Durante todo o processo será possível verific
 um display as informações de umidade, temperatura e acionamento da bomba de
 irrigação.
 ________________________________________________________________________________________
+
+Código do Projto de Controle de Umidade de Solo
+
+Abaixo segue o fluxograma da construção do código:
+
+!alt text[](https://github.com/SamuelOFernandes/Controle_Umidade_de_Solo_Arduino/blob/master/Fluxograma%20Codigo%20Ardu%C3%ADno%20Controle_Umidade_%20Solo.PNG)
+
+
+
 Código do Projeto com detalhes e comentários :
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -135,34 +144,17 @@ void loop() {
 
 
 
-Layout do projeto simulado
- (TinkerCad - Circuits)
-
+Layout do projeto simulado no link abaixo :
+![alt text](https://github.com/SamuelOFernandes/Controle_Umidade_de_Solo_Arduino/blob/master/layout.PNG)
  
 
 
 
+Pode ser conferido a orientação de programação no link abaixo:
 
+![alt text](https://github.com/SamuelOFernandes/Controle_Umidade_de_Solo_Arduino/blob/master/orienta%C3%A7%C3%A3o.PNG)
 
-Orientação de Programação
-
-
-
-N°	Atividade	Campo
-1	Importar biblioteca para display i2C com Shield	#Include
-2	Importar biblioteca para sensor DHT11	 
-3	Importar biblioteca para sensor de umidade de solo com Shield	 
-4	Configurar Serial	Void Setup()
-5	Declarar variáveis globais (sensores, display, relé e auxíliares)	 
-6	Configurar display i2C	 
-7	Criar texto padrão do LCD Temperatura	Void Loop()
-8	Criar texto padrão do LCD Umidade	 
-9	Criar texto padrão do LCD acionamento da bomba	 
-10	Criar rotina de leitura e configuração do sensor DHT11	 
-11	Criar rotina de leitura e configuração do sensor umidade do solo	 
-12	Criar rotina de amostragem normalizada no Display 	 
-13	Criar rotina de amostragem com operação da bomba no Display	 
-14	Criar tomada de decisão de acordo com valor de umidade pretendido	 
+	 
 
 
 	Componentes Utilizados
@@ -170,7 +162,7 @@ N°	Atividade	Campo
 ⦁	 Placa Uno R3
 ⦁	 Cabo usb  arduíno
 ⦁	Relé 8 canais 5v
-⦁	 Jumpers macho/macho e Jumpers macho/fêmea
+⦁	Jumpers macho/macho e Jumpers macho/fêmea
 ⦁	 Display lcd 16x2 12c backlight azul 
 ⦁	Módulo serial i2c para display lcd 
 ⦁	Protoboard 830 pontos 
@@ -181,9 +173,8 @@ N°	Atividade	Campo
 Descrição Técnica dos Itens Utilizados
 
 
-Placa Uno R3
- 1.0
-
+> Placa Uno R3
+ 
 Especificações: 
 
 - Microcontrolador: ATmega328  
@@ -198,15 +189,9 @@ Especificações:
 - EEPROM: 1KB
 - Velocidade do Clock: 16MHz 
 
+                     
+> Cabo USB Arduíno
 
-
-
-
-                      
-    Cabo USB Arduíno
-
-
- 1.1
 
 Especificações: 
 
@@ -214,22 +199,9 @@ Especificações:
 -  Conectores:  A Macho X B Macho
 
 
+>Relé 5v 8 canais 
 
 
-
-
-
-
-
-
-
-
-
-
-Relé 5v 8 canais 
-
-
- 1.2
 Especificações:
 
 
@@ -252,11 +224,7 @@ Especificações:
 – Tempo de resposta: 5~10ms
 – Dimensões: 135 x 52 x 20mm
 
-Jumpers Macho/Macho e Jumpers Macho/Fêmea
-
-   
-1.3(Jumpers  Macho/Macho )                                                                                   1.4 (Jumpers Macho/Fêmea )
-
+>Jumpers Macho/Macho e Jumpers Macho/Fêmea                                                                
 
 Especificações:
 
@@ -267,19 +235,9 @@ Especificações:
 – Fios de 24 AWG
 
 
+>Display LCD 16x2 12c Backlight Azul
 
-
-
-
-
-
-
-
-Display LCD 16x2 12c Backlight Azul
-
-
- 1.5
-
+ 
 Especificações:
 - Cor backlight: Azul
 - Cor escrita: Branca 
@@ -298,10 +256,7 @@ Pinos:
 - GND 
 
 
-Módulo serial i2c para display LCD 
-
- 1.6
-
+>Módulo serial i2c para display LCD 
 
 Especificações:
 - Endereço I2C: 0x20-0x27 (Padrão 0x20 mas pode ser modificado) 
@@ -318,9 +273,7 @@ Especificações:
 
 
 
-Protoboard 830 pontos
-
- 1.7
+>Protoboard 830 pontos
 
 
 Especificações:
@@ -334,15 +287,7 @@ Especificações:
 
 
 
-
-
-
-
-
- Módulo sensor de umidade de solo
-
-
- 1.8
+> Módulo sensor de umidade de solo
 
 
 Especificações: 
