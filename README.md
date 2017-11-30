@@ -1,6 +1,7 @@
 # Controle_Umidade_de_Solo_Arduino
 Objetivo
-O projeto consiste de através de um ARDUINO controlar e monitorar a umidade do solo, criando um sistema automático que faça a irrigação de acordo com  as configurações do sensor.
+O projeto consiste de através de um ARDUINO controlar e monitorar a umidade do solo, criandoum 
+sistema automático que faça a irrigação de acordo com  as configurações do sensor.
 ___________________________________________________________________________________
 Funcionamento: No ARDUINO UNO R3 será executada uma rotina responsável por
 processar as informações coletadas de um sensor de umidade, que estará sob a terra
@@ -74,7 +75,8 @@ void loop() {
 
 //================================================= Rotina de Monitoramento Serial=========================================================  
            
-  Serial.print("Leitura do Sensor: ");  Serial.print(analogRead(sensor)); Serial.print("\t Saída digital sensor: "); Serial.print(digitalRead(sensorSW));Serial.print("\tUmidade "); Serial.print(porcen); Serial.print("%\t"); Serial.print(bomb);
+  Serial.print("Leitura do Sensor: ");  Serial.print(analogRead(sensor)); Serial.print("\t Saída digital sensor: "); 
+		Serial.print(digitalRead(sensorSW));Serial.print("\tUmidade "); Serial.print(porcen); Serial.print("%\t"); Serial.print(bomb);
   Serial.print("\t"); Serial.print(digitalRead(relay));
   Serial.println("\n")               ;    
   
