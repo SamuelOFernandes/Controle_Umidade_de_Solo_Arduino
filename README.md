@@ -34,6 +34,10 @@ Abaixo segue o fluxograma da construção do código:
 ![alt text](https://github.com/SamuelOFernandes/Controle_Umidade_de_Solo_Arduino/blob/master/Fluxograma%20Codigo%20Ardu%C3%ADno%20Controle_Umidade_%20Solo.PNG)
 
 
+Pode ser conferido a orientação de programação abaixo:
+
+![alt text](https://github.com/SamuelOFernandes/Controle_Umidade_de_Solo_Arduino/blob/master/orienta%C3%A7%C3%A3o.PNG)
+
 
 Código do Projeto com detalhes e comentários :
 
@@ -144,17 +148,10 @@ void loop() {
 
 
 
-Layout do projeto simulado no link abaixo :
+Layout do projeto abaixo :
 ![alt text](https://github.com/SamuelOFernandes/Controle_Umidade_de_Solo_Arduino/blob/master/layout.PNG)
  
 
-
-
-Pode ser conferido a orientação de programação no link abaixo:
-
-![alt text](https://github.com/SamuelOFernandes/Controle_Umidade_de_Solo_Arduino/blob/master/orienta%C3%A7%C3%A3o.PNG)
-
-	 
 
 
 	Componentes Utilizados
